@@ -2,6 +2,7 @@ import { ProtectedRoute } from '@/auth/ProtectedRoute';
 import { Layout } from '@/layouts/layout';
 import { AuthCallbackPage } from '@/pages/AuthCallbackPage';
 import { HomePage } from '@/pages/HomePage';
+import { ManageRestaurantPage } from '@/pages/ManageRestaurantPage';
 import { UserProfilePage } from '@/pages/UserProfilePage';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
@@ -21,13 +22,25 @@ export const RoutesFunction = () => {
       {/* A rota(URL) "/auth-callback" ira renderizar a página AuthCallbackPage */}
       <Route path="/auth-callback" element={<AuthCallbackPage />} />
 
-      {/* A rota(URL) "/user-profile" ira renderizar a página User profile, mas ela só vai ser ativada se o usuário estiver logado */}
+      {/* A rota(URL) "/user-profile" ira renderizar a página User profile, mas ela só vai ser renderizada se o usuário estiver logado */}
       <Route element={<ProtectedRoute />}>
         <Route
           path="/user-profile"
           element={
             <Layout>
               <UserProfilePage />
+            </Layout>
+          }
+        />
+      </Route>
+
+      {/* A rota(URL) "/manage-restaurant" ira renderizar a página Mane Restaurant, mas ela só vai ser renderizada se o usuário estiver logado */}
+      <Route element={<ProtectedRoute />}>
+        <Route
+          path="/manage-restaurant"
+          element={
+            <Layout>
+              <ManageRestaurantPage />
             </Layout>
           }
         />

@@ -33,8 +33,17 @@ export const UsernameMenu = () => {
 
       <DropdownMenuContent>
         <DropdownMenuItem>
+          <Link
+            to="/manage-restaurant"
+            className="font-bold hover:text-orange-500"
+          >
+            Administrar restaurante
+          </Link>
+        </DropdownMenuItem>
+
+        <DropdownMenuItem>
           <Link to="/user-profile" className="font-bold hover:text-orange-500">
-            User Profile
+            Perfil de usuário
           </Link>
         </DropdownMenuItem>
 
