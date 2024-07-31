@@ -3,6 +3,7 @@ import { Layout } from '@/layouts/layout';
 import { AuthCallbackPage } from '@/pages/AuthCallbackPage';
 import { HomePage } from '@/pages/HomePage';
 import { ManageRestaurantPage } from '@/pages/ManageRestaurantPage';
+import { SearchPage } from '@/pages/SearchPage';
 import { UserProfilePage } from '@/pages/UserProfilePage';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
@@ -45,6 +46,15 @@ export const RoutesFunction = () => {
           }
         />
       </Route>
+
+      <Route
+        path="/search/:city"
+        element={
+          <Layout showHero={false}>
+            <SearchPage />
+          </Layout>
+        }
+      />
 
       {/* Qualquer rota(URL) que não estiver configurada em routes.tsx ira ser redirecionada para a home  */}
       <Route path="*" element={<Navigate to={'/'} />} />
