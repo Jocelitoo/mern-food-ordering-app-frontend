@@ -24,15 +24,23 @@ const formSchema = z.object({
   country: z.string().min(2, 'Estado precisa ter no mínimo 2 letras'),
 });
 
-type UserFormData = z.infer<typeof formSchema>;
+export type UserFormData = z.infer<typeof formSchema>;
 
 type Props = {
   onSave: (userProfileData: UserFormData) => void;
   currentUser: User;
   isLoading: boolean;
+  title?: string;
+  buttonText?: string;
 };
 
-export const UserProfileForm = ({ onSave, isLoading, currentUser }: Props) => {
+export const UserProfileForm = ({
+  onSave,
+  isLoading,
+  currentUser,
+  title = 'Formulário do perfil de usuário',
+  buttonText = 'Enviar',
+}: Props) => {
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: currentUser,
@@ -49,9 +57,7 @@ export const UserProfileForm = ({ onSave, isLoading, currentUser }: Props) => {
         className="p-4 space-y-4 bg-gray-100 rounded-lg sm:p-10"
       >
         <div>
-          <h2 className="text-2xl font-bold">
-            Formulário do perfil de usuário
-          </h2>
+          <h2 className="text-2xl font-bold">{title}</h2>
           <FormDescription>
             Veja e altere as informações do seu perfil aqui
           </FormDescription>
@@ -132,7 +138,7 @@ export const UserProfileForm = ({ onSave, isLoading, currentUser }: Props) => {
           <LoadingButton />
         ) : (
           <Button type="submit" className="bg-orange-500">
-            Enviar
+            {buttonText}
           </Button>
         )}
       </form>
