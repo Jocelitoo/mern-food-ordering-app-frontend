@@ -14,7 +14,7 @@ export const MobileNav = () => {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
 
   return (
-    <span>
+    <span className="flex">
       <Sheet>
         <SheetTrigger>
           <svg
@@ -34,7 +34,7 @@ export const MobileNav = () => {
         <SheetContent className="space-y-3">
           <SheetTitle>
             {isAuthenticated ? (
-              <span className="flex gap-1 items-center">
+              <span className="flex gap-1 items-center overflow-scroll">
                 <svg
                   stroke="currentColor"
                   fill="currentColor"

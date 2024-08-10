@@ -124,7 +124,7 @@ export const UserProfileForm = ({
             name="country"
             render={({ field }) => (
               <FormItem className="flex-1">
-                <FormLabel>Estado:</FormLabel>
+                <FormLabel>País:</FormLabel>
                 <FormControl>
                   <Input {...field} className="bg-white" />
                 </FormControl>

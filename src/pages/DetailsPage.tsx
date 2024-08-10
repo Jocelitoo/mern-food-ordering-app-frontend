@@ -100,6 +100,11 @@ export const DetailPage = () => {
         country: userFormData.country,
         email: userFormData.email as string,
       },
+      totalAmount:
+        cartItems.reduce(
+          (total, cartItem) => total + cartItem.price * cartItem.quantity,
+          0,
+        ) + restaurant.deliveryPrice,
     };
 
     const data = await createCheckoutSession(checkoutData);
@@ -150,6 +155,19 @@ export const DetailPage = () => {
               />
             </CardFooter>
           </Card>
+
+          <div className="mt-4 flex flex-col gap-4">
+            <p>
+              Dica de teste: Para concluir o pagamento, será pedido alguns
+              dados. Na parte de email escreva um email aleatório e na parte do
+              cartão de crédito copie os dados do cartão de teste
+              disponibilizado abaixo
+            </p>
+
+            <p>Número do cartão: 5105105105105100</p>
+            <p>MM/AA: 12/34</p>
+            <p>CVC: 123</p>
+          </div>
         </div>
       </div>
     </div>

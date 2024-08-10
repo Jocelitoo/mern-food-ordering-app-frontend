@@ -4,6 +4,7 @@ import { AuthCallbackPage } from '@/pages/AuthCallbackPage';
 import { DetailPage } from '@/pages/DetailsPage';
 import { HomePage } from '@/pages/HomePage';
 import { ManageRestaurantPage } from '@/pages/ManageRestaurantPage';
+import { OrderStatusPage } from '@/pages/OrderStatusPage';
 import { SearchPage } from '@/pages/SearchPage';
 import { UserProfilePage } from '@/pages/UserProfilePage';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -36,7 +37,7 @@ export const RoutesFunction = () => {
         />
       </Route>
 
-      {/* A rota(URL) "/manage-restaurant" ira renderizar a página Mane Restaurant, mas ela só vai ser renderizada se o usuário estiver logado */}
+      {/* A rota(URL) "/manage-restaurant" ira renderizar a página Manage Restaurant, mas ela só vai ser renderizada se o usuário estiver logado */}
       <Route element={<ProtectedRoute />}>
         <Route
           path="/manage-restaurant"
@@ -48,6 +49,19 @@ export const RoutesFunction = () => {
         />
       </Route>
 
+      {/* A rota(URL) "/order-status" ira renderizar a página Manage OrderStatusPage, mas ela só vai ser renderizada se o usuário estiver logado */}
+      <Route element={<ProtectedRoute />}>
+        <Route
+          path="/order-status"
+          element={
+            <Layout>
+              <OrderStatusPage />
+            </Layout>
+          }
+        />
+      </Route>
+
+      {/* A rota(URL) "/search/:city" ira renderizar a página SearchPage */}
       <Route
         path="/search/:city"
         element={
@@ -57,6 +71,7 @@ export const RoutesFunction = () => {
         }
       />
 
+      {/* A rota(URL) "/detail/:restaurantId" ira renderizar a página DetailPage */}
       <Route
         path="/detail/:restaurantId"
         element={

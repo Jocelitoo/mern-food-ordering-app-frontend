@@ -15,17 +15,21 @@ export const HomePage = () => {
   };
 
   return (
-    <div className="flex flex-col gap-12">
-      <div className="bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center -mt-16 sm:px-32">
+    <div className="flex flex-col gap-12 relative">
+      <div className="bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center -mt-16 sm:px-16 lg:px-32">
         <h1 className="text-5xl font-bold tracking-tight text-orange-600">
           Tuck into a takway today
         </h1>
 
         <span className="text-xl">Food is just a click away!</span>
         <SearchBar
-          placeHolder="Procure por cidade ou rua"
+          placeHolder="Procure por restaurantes na sua cidade"
           onSubmit={handleSearchSubmit}
         />
+
+        <p className="absolute left-10 top-5">
+          Guia de teste: Digite Fortaleza
+        </p>
       </div>
 
       <div className="grid sm:grid-cols-2 gap-5">
