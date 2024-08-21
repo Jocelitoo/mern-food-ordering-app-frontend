@@ -9,6 +9,7 @@ import { Card, CardFooter } from '@/components/ui/card';
 import { UserFormData } from '@/forms/user-profile-form/UserProfileForm';
 import { MenuItem as typeMenuItem } from '@/types/types';
 import { useState } from 'react';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useParams } from 'react-router-dom';
 
 export type CartItem = {
@@ -112,7 +113,20 @@ export const DetailPage = () => {
   };
 
   if (isLoading || !restaurant) {
-    return 'Loading...';
+    return (
+      <div
+        className="flex flex-col justify-center items-center gap-3
+  "
+      >
+        <AiOutlineLoading3Quarters className="animate-spin size-24" />
+        <p>Carregando...</p>
+        <p className="text-center">
+          <span className="uppercase font-bold">Obs:</span> Caso esteja
+          demorando, saiba que é normal demorar um pouco na primeira requisição
+          feita à API
+        </p>
+      </div>
+    );
   }
 
   return (

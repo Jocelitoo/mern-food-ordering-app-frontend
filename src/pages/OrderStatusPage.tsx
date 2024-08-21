@@ -2,16 +2,30 @@ import { useGetMyOrders } from '@/api/OrderApi';
 import { OrderStatusDetails } from '@/components/OrderStatusDetails';
 import { OrderStatusHeader } from '@/components/OrderStatusHeader';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 export const OrderStatusPage = () => {
   const { orders, isLoading } = useGetMyOrders();
 
   if (isLoading) {
-    return 'Carregando... (Caso demore, é normal demorar um pouco na primeira requisição feita à API)';
+    return (
+      <div
+        className="flex flex-col justify-center items-center gap-3
+  "
+      >
+        <AiOutlineLoading3Quarters className="animate-spin size-24" />
+        <p>Carregando...</p>
+        <p className="text-center">
+          <span className="uppercase font-bold">Obs:</span> Caso esteja
+          demorando, saiba que é normal demorar um pouco na primeira requisição
+          feita à API
+        </p>
+      </div>
+    );
   }
 
   if (!orders || orders.length === 0) {
-    return 'Nenhum pedido encontrado';
+    return <p>Nenhum pedido encontrado</p>;
   }
 
   return (

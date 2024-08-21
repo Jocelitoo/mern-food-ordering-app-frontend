@@ -7,6 +7,7 @@ import { SearchResultInfo } from '@/components/SearchResultInfo';
 import { SortOptionDropdown } from '@/components/SortOptionDropdown';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 export type SearchState = {
   searchQuery: string;
@@ -69,10 +70,18 @@ export const SearchPage = () => {
 
   if (isLoading) {
     return (
-      <span>
-        Carregando... (Caso demore, é normal demorar um pouco na primeira
-        requisição feita à API)
-      </span>
+      <div
+        className="flex flex-col justify-center items-center gap-3
+      "
+      >
+        <AiOutlineLoading3Quarters className="animate-spin size-24" />
+        <p>Carregando...</p>
+        <p className="text-center">
+          <span className="uppercase font-bold">Obs:</span> Caso esteja
+          demorando, saiba que é normal demorar um pouco na primeira requisição
+          feita à API
+        </p>
+      </div>
     );
   }
 
