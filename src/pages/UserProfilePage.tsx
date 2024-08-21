@@ -6,7 +6,12 @@ export const UserProfilePage = () => {
   const { currentUser, isLoading: isGetLoading } = useGetMyUser();
 
   if (isGetLoading) {
-    return <span>Carregando...</span>;
+    return (
+      <span>
+        Carregando... (Caso demore, é normal demorar um pouco na primeira
+        requisição feita à API)
+      </span>
+    );
   }
 
   if (!currentUser) {

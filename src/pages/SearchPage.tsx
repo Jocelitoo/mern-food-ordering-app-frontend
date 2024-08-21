@@ -68,10 +68,16 @@ export const SearchPage = () => {
   };
 
   if (isLoading) {
-    <span>Loading...</span>;
+    return (
+      <span>
+        Carregando... (Caso demore, é normal demorar um pouco na primeira
+        requisição feita à API)
+      </span>
+    );
   }
 
   if (!results?.data || !city) {
+    console.log('oi');
     return <span>Nenhum resultado encontrado</span>;
   }
 

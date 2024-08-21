@@ -1,6 +1,7 @@
 import { SearchState } from '@/pages/SearchPage';
 import { Restaurant, RestaurantSearchResponse } from '@/types/types';
 import { useQuery } from 'react-query';
+import { toast } from 'sonner';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -50,11 +51,17 @@ export const useSearchRestaurants = (
     return response.json();
   };
 
-  const { data: results, isLoading } = useQuery(
-    ['searchRestaurants', searchState],
-    createSearchRequest,
-    { enabled: !!city },
-  );
+  const {
+    data: results,
+    isLoading,
+    error,
+  } = useQuery(['searchRestaurants', searchState], createSearchRequest, {
+    enabled: !!city,
+  });
+
+  if (error) {
+    toast.error(error.toString());
+  }
 
   return {
     results,

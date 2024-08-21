@@ -7,7 +7,7 @@ export const OrderStatusPage = () => {
   const { orders, isLoading } = useGetMyOrders();
 
   if (isLoading) {
-    return 'Loading...';
+    return 'Carregando... (Caso demore, é normal demorar um pouco na primeira requisição feita à API)';
   }
 
   if (!orders || orders.length === 0) {
